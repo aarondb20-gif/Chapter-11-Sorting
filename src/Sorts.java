@@ -4,7 +4,7 @@ import java.text.DecimalFormat;
 public class Sorts {
     static final int SIZE = 50;
     static int[] values = new int[SIZE];
-
+    static int[] tempArray = new int[SIZE];
     //Initializes the values array with random integers 0-1000
     static void initValues(){
         Random rand = new Random();
@@ -34,7 +34,7 @@ public class Sorts {
             if (((index + 1) % 10) == 0)
                 System.out.println(fmt.format(value));
             else
-                System.out.println(fmt.format(value) + " ");
+                System.out.print(fmt.format(value) + " ");
         }
         System.out.println();
     }
@@ -54,7 +54,6 @@ public class Sorts {
     }
     //Sorts values[leftFirst] to values[rightLast] by merging the two subarrays
     static void merge(int leftFirst, int leftLast, int rightFirst, int rightLast){
-        int[] tempArray = new int[SIZE];
         int index = leftFirst;
         int saveFirst = leftFirst; //to remember where to copy back
         while ((leftFirst <= leftLast) && (rightFirst <= rightLast)){
