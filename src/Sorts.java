@@ -46,11 +46,50 @@ public class Sorts {
                 indexOfMin = index;
         return indexOfMin;
     }
-
+    //Selection sort uses minIndex and swap
     static void selectionSort() {
         int endIndex = SIZE - 1;
         for (int current = 0; current < endIndex; current++)
             swap(current, minIndex(current, endIndex));
+    }
+    //Sorts values[leftFirst] to values[rightLast] by merging the two subarrays
+    static void merge(int leftFirst, int leftLast, int rightFirst, int rightLast){
+        int[] tempArray = new int[SIZE];
+        int index = leftFirst;
+        int saveFirst = leftFirst; //to remember where to copy back
+        while ((leftFirst <= leftLast) && (rightFirst <= rightLast)){
+            if (values[leftFirst] < values[rightFirst]){
+                tempArray[index] = values[leftFirst];
+                leftFirst++;
+            }else{
+                tempArray[index] = values[rightFirst];
+                rightFirst++;
+            }
+            index++;
+        }
+        //copy remaining elements from left half
+        while (leftFirst <= leftLast){
+            tempArray[index] = values[leftFirst];
+            leftFirst++;
+            index++;
+        }
+        //copy remaining elements from right half
+        while (rightFirst <= rightLast){
+            tempArray[index] = values[rightFirst];
+            rightFirst++;
+            index++;
+        }
+        for (index = saveFirst; index <= rightLast; index++)
+            values[index] = tempArray[index];
+    }
+    //mergeSort algorithm uses merge method
+    static void mergeSort(int first, int last){
+        if (first < last){
+            int middle = (first + last) / 2;
+            mergeSort(first, middle);
+            mergeSort(middle + 1, last);
+            merge(first, middle, middle + 1, last);
+        }
     }
 
 
