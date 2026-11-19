@@ -7,5 +7,10 @@ public class Main {
         Sorts.printValues();
         System.out.println("Values is sorted: " + Sorts.isSorted());
         System.out.println();
+        Sorts.selectionSort();
+        System.out.println("Selection sort called.\n");
+        Sorts.printValues();
+        System.out.println("Values is sorted: " + Sorts.isSorted());
+
     }
 }
