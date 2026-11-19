@@ -1,5 +1,11 @@
+import java.io.IOException;
+
 public class Main {
-    static void main() {
-        System.out.println("Hello World!");
+    public static void main(String[] args) throws IOException
+    {
+        Sorts.initValues();
+        Sorts.printValues();
+        System.out.println("Values is sorted: " + Sorts.isSorted());
+        System.out.println();
     }
 }
